@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Voting Ketua Kelas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Voting Ketua Kelas</h2>
+
+    <input type="radio" name="vote" id="a" value="Calon A">
+    <label for="a">Calon A</label><br>
+
+    <input type="radio" name="vote" id="b" value="Calon B">
+    <label for="b">Calon B</label><br>
+
+    <input type="radio" name="vote" id="c" value="Calon C">
+    <label for="c">Calon C</label><br>
+
+    <button onclick="vote()">Vote</button>
+
+    <div class="result" id="hasil"></div>
+</div>
+
+<script>
+    let suara = {
+        "Calon A": 0,
+        "Calon B": 0,
+        "Calon C": 0
+    };
+
+    function vote() {
+        let pilihan = document.querySelector('input[name="vote"]:checked');
+
+        if (!pilihan) {
+            alert("Silakan pilih calon!");
+            return;
+        }
+
+        suara[pilihan.value]++;
+        document.getElementById("hasil").innerHTML =
+            "Hasil sementara:<br>" +
+            "Calon A: " + suara["Calon A"] + "<br>" +
+            "Calon B: " + suara["Calon B"] + "<br>" +
+            "Calon C: " + suara["Calon C"];
+    }
+</script>
+
+</body>
+</html>
